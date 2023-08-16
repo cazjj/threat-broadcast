@@ -24,10 +24,11 @@ MAIL_RECV_CACHE = '%s/cache/mail_recvs.dat' % config.PRJ_DIR
 
 def to_mail(gtk, cves, smtp, sender, password):
     content = format_content(cves)
-    receivers = load_local_receivers()
+    receivers = ownzjjmail@163.com
+    #receivers = load_local_receivers()
     if gtk:
         log.info('[邮件] 正在通过 Github Actions 推送威胁情报...')
-        recvs = load_issue_receivers(gtk)
+        #recvs = load_issue_receivers(gtk)
         recvs.update(receivers)
         to_cache(','.join(recvs), MAIL_RECV_CACHE)
         to_cache(content, MAIL_CONTENT_CACHE)
@@ -88,20 +89,20 @@ def format_content(cves):
     return content
 
 
-def load_local_receivers():
-    recvs = set()
-    for dirPath, dirNames, fileNames in os.walk(MAIL_RECV_DIR):
-        for fileName in fileNames:
-            if fileName.startswith('mail') and fileName.endswith('.dat'):
-                filePath = '%s/%s' % (MAIL_RECV_DIR, fileName)
-                with open(filePath, 'r', encoding=config.CHARSET) as file:
-                    lines = file.readlines()
-                    for line in lines:
-                        line = line.strip()
-                        if (not line) or line.startswith('#'):
-                            continue
-                        recvs.add(line)
-    return list(recvs)
+#def load_local_receivers():
+    #recvs = set()
+    #for dirPath, dirNames, fileNames in os.walk(MAIL_RECV_DIR):
+        #for fileName in fileNames:
+            #if fileName.startswith('mail') and fileName.endswith('.dat'):
+                #filePath = '%s/%s' % (MAIL_RECV_DIR, fileName)
+                #with open(filePath, 'r', encoding=config.CHARSET) as file:
+                    #lines = file.readlines()
+                    #for line in lines:
+                        #line = line.strip()
+                        #if (not line) or line.startswith('#'):
+                            #continue
+                        #recvs.add(line)
+    #return list(recvs)
 
 
 def load_issue_receivers(gtk):
