@@ -20,6 +20,7 @@ MAIL_RECV_DIR = '%s/recv' % config.PRJ_DIR
 
 MAIL_CONTENT_CACHE = '%s/cache/mail_content.dat' % config.PRJ_DIR
 MAIL_RECV_CACHE = '%s/cache/mail_recvs.dat' % config.PRJ_DIR
+#gtk:github token
 
 
 def to_mail(gtk, cves, smtp, sender, password):
