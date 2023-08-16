@@ -29,8 +29,8 @@ def to_mail(gtk, cves, smtp, sender, password):
     if gtk:
         log.info('[邮件] 正在通过 Github Actions 推送威胁情报...')
         #recvs = load_issue_receivers(gtk)
-        recvs.update(receivers)
-        to_cache(','.join(recvs), MAIL_RECV_CACHE)
+        #recvs.update(receivers)
+        to_cache(','.join('nothing list'), MAIL_RECV_CACHE)
         to_cache(content, MAIL_CONTENT_CACHE)
 
     else:
@@ -38,7 +38,7 @@ def to_mail(gtk, cves, smtp, sender, password):
         email = MIMEText(content, 'html', config.CHARSET)     # 以 html 格式发送邮件内容
         email['From'] = sender
         email['To'] = ', '.join(receivers)                  # 此处收件人列表必须为逗号分隔的 str
-        log.info('[邮件] 收件人清单： %s' % receivers)
+        log.info('[邮件] 收件人清单：ownzjjmail@163.com ')
         subject = '威胁情报播报'
         email['Subject'] = Header(subject, 'utf-8')
 
@@ -65,7 +65,7 @@ def format_content(cves):
 <br/><br/>
 ++++++++++++++++++++++++++++++++++++++++++++++
 <br/>
-<font color="red">【情报收集与播报支持】</font> https://lyy289065406.github.io/threat-broadcast/
+<font color="red">【情报收集与播报支持】</font>
 '''
     src_infos = []
     cve_infos = []
