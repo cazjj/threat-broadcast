@@ -32,7 +32,7 @@ def to_mail(gtk, cves, smtp, sender, password):
         recvs = 'ownzjjmail@163.com'
         #recvs = load_issue_receivers(gtk)
         #recvs.update(receivers)
-        to_cache(','.join('nothing list'), MAIL_RECV_CACHE)
+        to_cache(','.join(recvs), MAIL_RECV_CACHE)
         to_cache(content, MAIL_CONTENT_CACHE)
 
     else:
@@ -45,6 +45,7 @@ def to_mail(gtk, cves, smtp, sender, password):
         email['Subject'] = Header(subject, 'utf-8')
 
         try:
+            log.info('执行sendmail')
             smtpObj = smtplib.SMTP(smtp)
             smtpObj.login(sender, password)
             smtpObj.sendmail(sender, ["ownzjjmail@163.com","1359654436@qq.com"], email.as_string())  # 此处收件人列表必须为 list
