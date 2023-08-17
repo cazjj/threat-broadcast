@@ -27,15 +27,15 @@ def to_mail(gtk, cves, smtp, sender, password):
     content = format_content(cves)
     receivers = ['ownzjjmail@163.com']
     #receivers = load_local_receivers()
-    if gtk:
-        log.info('[邮件] 正在通过 Github Actions 推送威胁情报...')
-        recvs = 'ownzjjmail@163.com'
+    #if gtk:
+        #log.info('[邮件] 正在通过 Github Actions 推送威胁情报...')
+        #recvs = 'ownzjjmail@163.com'
         #recvs = load_issue_receivers(gtk)
         #recvs.update(receivers)
-        to_cache(','.join(recvs), MAIL_RECV_CACHE)
-        to_cache(content, MAIL_CONTENT_CACHE)
+        #to_cache(','.join(recvs), MAIL_RECV_CACHE)
+        #to_cache(content, MAIL_CONTENT_CACHE)
 
-    else:
+    #else:
         log.info('[邮件] 正在推送威胁情报...')
         email = MIMEText(content, 'html', config.CHARSET)     # 以 html 格式发送邮件内容
         email['From'] = sender
