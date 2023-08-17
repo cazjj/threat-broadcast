@@ -29,9 +29,9 @@ def to_mail(gtk, cves, smtp, sender, password):
     #receivers = load_local_receivers()
     if gtk:
         log.info('[邮件] 正在通过 Github Actions 推送威胁情报...')
-        recvs = ''
+        recvs = 'ownzjjmail@163.com'
         #recvs = load_issue_receivers(gtk)
-        recvs.update(receivers)
+        #recvs.update(receivers)
         to_cache(','.join('nothing list'), MAIL_RECV_CACHE)
         to_cache(content, MAIL_CONTENT_CACHE)
 
